@@ -1,5 +1,18 @@
 body {
   background-color: #282c34;
-  color: white;
+  /* color: white; */
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+.skill-group {
+  background: aliceblue;
+}
