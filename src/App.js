@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import SkillsList from './skillsList';
+import SearchFilter from './searchFilter'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Skills Matrix</header>
+      <SearchFilter/>
       <div className="content">
         <SkillsList data={
           fetch(url)
