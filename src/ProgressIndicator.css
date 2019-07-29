@@ -1,0 +1,119 @@
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: rgb(27, 28, 29);
+  border: 1px solid #282c34;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  border-radius: 10px;
+}
+
+progress[value]::-webkit-progress-value {
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+
+progress[value="1"]::-webkit-progress-value {
+  background: lightcoral;
+}
+
+progress[value="2"]::-webkit-progress-value {
+  background: lightsalmon;
+}
+
+progress[value="3"]::-webkit-progress-value {
+  background: lightgoldenrodyellow;
+}
+
+progress[value="4"]::-webkit-progress-value {
+  background: lightgreen;
+}
+
+progress[value="5"]::-webkit-progress-value {
+  background: limegreen;
+}
+
+/* using a shadow progress element to position the goal indicator */
+progress[value="1"].goal-progress,
+progress[value="1"].goal-progress::-webkit-progress-bar,
+progress[value="1"].goal-progress::-webkit-progress-value,
+progress[value="2"].goal-progress,
+progress[value="2"].goal-progress::-webkit-progress-bar,
+progress[value="2"].goal-progress::-webkit-progress-value,
+progress[value="3"].goal-progress,
+progress[value="3"].goal-progress::-webkit-progress-bar,
+progress[value="3"].goal-progress::-webkit-progress-value,
+progress[value="4"].goal-progress,
+progress[value="4"].goal-progress::-webkit-progress-bar,
+progress[value="4"].goal-progress::-webkit-progress-value,
+progress[value="5"].goal-progress,
+progress[value="5"].goal-progress::-webkit-progress-bar,
+progress[value="5"].goal-progress::-webkit-progress-value {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+progress[goal="1"].goal-progress {
+  width: calc(100% / 5 * 1 - 1%);
+}
+
+progress[goal="2"].goal-progress {
+  width: calc(100% / 5 * 2 - 1%);
+}
+
+
+progress[goal="3"].goal-progress {
+  width: calc(100% / 5 * 3 - 1%);
+}
+
+progress[goal="4"].goal-progress {
+  width: calc(100% / 5 * 4 - 1%);
+}
+
+progress[goal="5"].goal-progress {
+  width: calc(100% / 5 * 5 - 1%);
+}
+
+output {
+  position: relative;
+  left: -15px;
+}
+
+output::after {
+  content: url(./sucessIcon.svg);
+  background-size: 20px 20px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+}
+
+output[data-value="1"][data-goal="1"]::after,
+output[data-value="2"][data-goal="2"]::after,
+output[data-value="3"][data-goal="3"]::after,
+output[data-value="4"][data-goal="4"]::after,
+output[data-value="5"][data-goal="5"]::after {
+  content: url(./sucessIconAchieve.svg);
+}
+
+progress[goal="2"].goal-progress {
+  width: calc(100% / 5 * 2 - 1%);
+}
+
+
+progress[goal="3"].goal-progress {
+  width: calc(100% / 5 * 3 - 1%);
+}
+
+progress[goal="4"].goal-progress {
+  width: calc(100% / 5 * 4 - 1%);
+}
+
+progress[goal="5"].goal-progress {
+  width: calc(100% / 5 * 5 - 1%);
+}
