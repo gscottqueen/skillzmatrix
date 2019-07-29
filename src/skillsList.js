@@ -7,8 +7,18 @@ class SkillsList extends Component {
     this.state = {
       skillsJson: props.data,
       skills: [],
+      searchValue: "",
       filteredSkills: [],
     };
+    this.getCurrentValue = this.getCurrentValue.bind(this);
+    console.log(props)
+  }
+
+  getCurrentValue(e) {
+    console.log(e.target.value)
+    this.setState({
+      searchValue: e.target.value.toLowerCase(),
+    });
   }
 
   componentWillMount() {
@@ -56,39 +66,49 @@ class SkillsList extends Component {
   render() {
 
     return (
-      <ul className="parent-skill-group">
-        {this.state.skills.map(function(skill, index) {
-          return <li className="skill-group" key={index}>
-            <ul>
-              <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
-              <li>
-                <ProgressIndicator
-                  id={skill.gsx$concept.$t}
-                  value={skill.gsx$measure.$t}
-                  goal={skill.gsx$goal.$t}>
-                </ProgressIndicator>
-              </li>
-              {skill.children &&
-                <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
-                  return <li className="skill-group" key={childindex}>
-                    <ul>
-                      <label htmlFor="file" className="concept">{ childSkill.gsx$concept.$t }</label>
-                      <li>
-                        <ProgressIndicator
-                          id={childSkill.gsx$concept.$t}
-                          value={childSkill.gsx$measure.$t}
-                          goal={childSkill.gsx$goal.$t}>
-                        </ProgressIndicator>
-                      </li>
-                    </ul>
-                 </li>
-              })}
+      <div>
+        <div>
+          <input
+            type="text"
+            className="input"
+            placeholder="Search..."
+            value={this.state.searchValue}
+            onChange={this.getCurrentValue} />
+        </div>
+        <ul className="parent-skill-group">
+          {this.state.skills.map(function(skill, index) {
+            return <li className="skill-group" key={index}>
+              <ul>
+                <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
+                <li>
+                  <ProgressIndicator
+                    id={skill.gsx$concept.$t}
+                    value={skill.gsx$measure.$t}
+                    goal={skill.gsx$goal.$t}>
+                  </ProgressIndicator>
+                </li>
+                {skill.children &&
+                  <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
+                    return <li className="skill-group" key={childindex}>
+                      <ul>
+                        <label htmlFor="file" className="concept">{ childSkill.gsx$concept.$t }</label>
+                        <li>
+                          <ProgressIndicator
+                            id={childSkill.gsx$concept.$t}
+                            value={childSkill.gsx$measure.$t}
+                            goal={childSkill.gsx$goal.$t}>
+                          </ProgressIndicator>
+                        </li>
+                      </ul>
+                  </li>
+                })}
+                </ul>
+                }
               </ul>
-              }
-            </ul>
-          </li>
-        })}
-      </ul>
+            </li>
+          })}
+        </ul>
+      </div>
     );
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import SkillsList from './skillsList';
-import SearchFilter from './searchFilter'
+// import SearchFilter from './searchFilter'
 
 function App() {
 
@@ -10,10 +10,11 @@ function App() {
   // Make sure it is public or set to Anyone with link can view
   var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 
+
   return (
     <div className="App">
       <header className="App-header">Skills Matrix</header>
-      <SearchFilter/>
+      {/* <SearchFilter/> */}
       <div className="content">
         <SkillsList data={
           fetch(url)
