@@ -7,6 +7,7 @@ class SkillsList extends Component {
     this.state = {
       skillsJson: props.data,
       skills: [],
+      filteredSkills: [],
     };
   }
 
@@ -29,16 +30,26 @@ class SkillsList extends Component {
             orderedSkills.push(arr[i])
           }
         }
-        // console.log("orderedSkills", orderedSkills)
         return orderedSkills
       }
 
       getNestedChildren(skillSet, "0")
-      console.log(SKILLS)
 
       this.setState({
         skills: SKILLS,
       })
+    });
+  }
+
+  componentDidMount() {
+    this.setState({
+      filteredSkills: this.props.items
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filteredSkills: nextProps.items
     });
   }
 
@@ -47,10 +58,9 @@ class SkillsList extends Component {
     return (
       <ul className="parent-skill-group">
         {this.state.skills.map(function(skill, index) {
-          console.log(skill.children)
           return <li className="skill-group" key={index}>
             <ul>
-              <label for="file" className="concept">{skill.gsx$concept.$t}</label>
+              <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
               <li>
                 <ProgressIndicator
                   id={skill.gsx$concept.$t}
@@ -62,7 +72,7 @@ class SkillsList extends Component {
                 <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
                   return <li className="skill-group" key={childindex}>
                     <ul>
-                      <label for="file" className="concept">{ childSkill.gsx$concept.$t }</label>
+                      <label htmlFor="file" className="concept">{ childSkill.gsx$concept.$t }</label>
                       <li>
                         <ProgressIndicator
                           id={childSkill.gsx$concept.$t}
