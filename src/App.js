@@ -15,7 +15,7 @@ function App() {
       <div className="content">
         <SkillsList data={
           fetch(url)
-            .then(res => res.json()) // tansform the data into json
+            .then(res => res.json())
           }></SkillsList>
       </div>
     </div>
