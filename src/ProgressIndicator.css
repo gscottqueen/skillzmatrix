@@ -80,12 +80,12 @@ progress[goal="5"].goal-progress {
   width: calc(100% / 5 * 5 - 1%);
 }
 
-output {
+output.goal-check {
   position: relative;
   left: -15px;
 }
 
-output::after {
+output.goal-check::after {
   content: url(./sucessIcon.svg);
   background-size: 20px 20px;
   height: 20px;
@@ -93,27 +93,43 @@ output::after {
   position: absolute;
 }
 
-output[data-value="1"][data-goal="1"]::after,
-output[data-value="2"][data-goal="2"]::after,
-output[data-value="3"][data-goal="3"]::after,
-output[data-value="4"][data-goal="4"]::after,
-output[data-value="5"][data-goal="5"]::after {
+output.goal-check[data-value="1"][data-goal="1"]::after,
+output.goal-check[data-value="2"][data-goal="2"]::after,
+output.goal-check[data-value="3"][data-goal="3"]::after,
+output.goal-check[data-value="4"][data-goal="4"]::after,
+output.goal-check[data-value="5"][data-goal="5"]::after {
   content: url(./sucessIconAchieve.svg);
 }
 
+output.goal-line {
+  position: relative;
+  bottom: 18px;
+}
+
+output.goal-line::after {
+  content: "";
+  height: 20px;
+  border-right: 1px solid white;
+  position: absolute;
+}
+
+output.goal-line[data-goal="5"]::after {
+  content: none;
+}
+
 progress[goal="2"].goal-progress {
-  width: calc(100% / 5 * 2 - 1%);
+  width: calc(100% / 5 * 2);
 }
 
 
 progress[goal="3"].goal-progress {
-  width: calc(100% / 5 * 3 - 1%);
+  width: calc(100% / 5 * 3);
 }
 
 progress[goal="4"].goal-progress {
-  width: calc(100% / 5 * 4 - 1%);
+  width: calc(100% / 5 * 4);
 }
 
 progress[goal="5"].goal-progress {
-  width: calc(100% / 5 * 5 - 1%);
+  width: calc(100% / 5 * 5);
 }

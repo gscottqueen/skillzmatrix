@@ -14,7 +14,7 @@ class ProgressIndicator extends Component {
 
   render() {
     return (
-      <div>
+      <div className="progress-bar-group">
         <progress
           min="0"
           max="5"
@@ -24,6 +24,7 @@ class ProgressIndicator extends Component {
           value={this.state.currentValue}>
         </progress>
         <output
+          className="goal-check"
           for={this.state.id}
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
@@ -37,11 +38,12 @@ class ProgressIndicator extends Component {
           goal={this.state.goalValue}
           value={this.state.currentValue}>
         </progress>
-        {/* <output
+        <output
+          className="goal-line"
           for={this.state.id}
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
-          data-value={this.state.currentValue}></output> */}
+          data-value={this.state.currentValue}></output>
       </div>
     )
   }
