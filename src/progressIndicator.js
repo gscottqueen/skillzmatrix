@@ -9,7 +9,6 @@ class ProgressIndicator extends Component {
       currentValue: props.value,
       goalValue: props.goal,
     };
-    console.log(props)
   }
 
   render() {
@@ -25,7 +24,7 @@ class ProgressIndicator extends Component {
         </progress>
         <output
           className="goal-check"
-          for={this.state.id}
+          htmlFor={this.state.id}
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
           data-value={this.state.currentValue}></output>
@@ -40,7 +39,7 @@ class ProgressIndicator extends Component {
         </progress>
         <output
           className="goal-line"
-          for={this.state.id}
+          htmlFor={this.state.id}
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
           data-value={this.state.currentValue}></output>
