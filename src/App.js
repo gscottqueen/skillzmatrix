@@ -13,8 +13,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Skills Matrix</header>
-      {/* <SearchFilter/> */}
       <div className="content">
         <SkillsList data={
           fetch(url)

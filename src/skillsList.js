@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ProgressIndicator from './progressIndicator'
+import './SearchFilter.css'
 
 class SkillsList extends Component {
   constructor(props) {
@@ -11,18 +12,23 @@ class SkillsList extends Component {
       filteredSkills: [],
     };
     this.getCurrentValue = this.getCurrentValue.bind(this);
-    console.log(props)
   }
 
   getCurrentValue(e) {
-    console.log(e.target.value)
+    var filteredList = this.state.skills;
+      filteredList = filteredList.filter(function (item) {
+        console.log(item)
+        return item.gsx$concept.$t.toLowerCase().indexOf(
+          e.target.value.toLowerCase()) !== -1;
+      });
+
     this.setState({
-      searchValue: e.target.value.toLowerCase(),
+      searchValue: e.target.value,
+      filteredSkills: filteredList,
     });
   }
 
   componentWillMount() {
-
     this.state.skillsJson.then(data => {
 
       const skillSet = data.feed.entry
@@ -46,20 +52,9 @@ class SkillsList extends Component {
       getNestedChildren(skillSet, "0")
 
       this.setState({
-        skills: SKILLS,
+        skills: skillSet,
+        filteredSkills: SKILLS,
       })
-    });
-  }
-
-  componentDidMount() {
-    this.setState({
-      filteredSkills: this.props.items
-    });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      filteredSkills: nextProps.items
     });
   }
 
@@ -70,13 +65,13 @@ class SkillsList extends Component {
         <div>
           <input
             type="text"
-            className="input"
-            placeholder="Search..."
+            className="search-filter"
+            placeholder="Search for a skill to filter..."
             value={this.state.searchValue}
             onChange={this.getCurrentValue} />
         </div>
         <ul className="parent-skill-group">
-          {this.state.skills.map(function(skill, index) {
+          {this.state.filteredSkills.map(function(skill, index) {
             return <li className="skill-group" key={index}>
               <ul>
                 <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>

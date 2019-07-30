@@ -1,0 +1,10 @@
+.search-filter {
+    width: 100%;
+    border: none;
+    color: white;
+    background: black;
+    height: 50px;
+    padding: 20px;
+    font-size: 25px;
+    font-weight: 200;
+}
