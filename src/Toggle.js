@@ -7,7 +7,7 @@ class Toggle extends Component {
     return (
       <div className="toggle-group">
         <span className="toggle-label">Toggle Roadmap</span>
-        <label className="switch" for="roadmapToggle">
+        <label className="switch" htmlFor="roadmapToggle">
           <input
             id="roadmapToggle"
             name="roadmapToggle"
