@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import SkillsList from './skillsList';
-// import SearchFilter from './searchFilter'
 
 function App() {
 
+  console.log(process.env.REACT_APP_SHEET_ID)
   // ID of the Google Spreadsheet
-  var spreadsheetID = "1yQZmclHWBJ3zSS_Vt7bf7XjqaW1vrRIm5300wNHcG_0";
+  var spreadsheetID = String(process.env.REACT_APP_SHEET_ID);
   // Make sure it is public or set to Anyone with link can view
   var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 
