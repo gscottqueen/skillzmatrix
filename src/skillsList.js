@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProgressIndicator from './progressIndicator'
 import './SearchFilter.css'
+import './SkillsList.css'
 import Toggle from './Toggle'
 
 class SkillsList extends Component {
@@ -10,7 +11,7 @@ class SkillsList extends Component {
       skills: [],
       searchValue: "",
       filteredSkills: [],
-      isChecked: false,
+      isChecked: true,
     };
     this.filterByValue = this.filterByValue.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -58,6 +59,7 @@ class SkillsList extends Component {
   handleToggle() {
     this.setState({
       isChecked: !this.state.isChecked,
+      skills: this.nestChildren(this.state.skills, 0),
     });
   }
 
@@ -65,21 +67,35 @@ class SkillsList extends Component {
 
     return (
       <div>
-        <div>
+        <header className="header">
         <Toggle
           isChecked={this.state.isChecked}
           handleToggle={this.handleToggle}/>
-        {this.state.isChecked === false &&
+        {/* {this.state.isChecked === false && */}
           <input
             type="text"
             className="search-filter"
             placeholder="Search for a skill to filter..."
             value={this.state.searchValue}
             onChange={this.filterByValue} />
-          }
-        </div>
+          {/* } */}
+        </header>
         { this.state.isChecked ? (
-          <div>shit boy</div>
+          <div className="roadmap__parent-skill-group">
+            {this.state.filteredSkills.map(function (skill, index) {
+              return <div className="roadmap__skill-group" key={index}>
+                <div htmlFor="file" className="roadmap__concept">{skill.gsx$concept.$t}</div>
+                  {skill.children &&
+                    <div className="roadmap__child-skill-group">{skill.children.map(function (childSkill, childindex) {
+                      return <div className="roadmap__child-skill" key={childindex}>
+                        <div>{childSkill.gsx$concept.$t}</div>
+                      </div>
+                    })}
+                    </div>
+                  }
+              </div>
+            })}
+          </div>
           ) : (
             <ul className="parent-skill-group">
               {this.state.filteredSkills.map(function (skill, index) {

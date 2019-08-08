@@ -56,7 +56,7 @@ progress[value="5"].goal-progress::-webkit-progress-value {
   background: transparent;
   border: none;
   box-shadow: none;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 progress[goal="1"].goal-progress {
@@ -103,19 +103,32 @@ output.goal-check[data-value="5"][data-goal="5"]::after {
 
 output.goal-line {
   position: relative;
-  bottom: 18px;
+  bottom: 22px;
 }
 
 output.goal-line::after {
   content: "";
-  height: 20px;
+  height: 28px;
   border-right: 1px solid white;
   position: absolute;
 }
 
-output.goal-line[data-goal="5"]::after {
+output.goal-line::before {
+  content: attr(data-goal);
+  position: absolute;
+  right: -4px;
+  top: 32px;
+  font-size: 11px;
+}
+
+output.goal-line[data-goal="5"]::after,
+output.goal-line[data-goal="5"]::before {
   content: none;
 }
+
+/* output.goal-line[data-goal="5"]::before {
+  right: 0px;
+} */
 
 progress[goal="2"].goal-progress {
   width: calc(100% / 5 * 2);

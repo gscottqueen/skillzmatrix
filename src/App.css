@@ -3,6 +3,15 @@ body {
   color: aliceblue;
 }
 
+.content {
+  overflow: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0px;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -11,14 +20,5 @@ ul {
 
 li {
   margin-bottom: 20px;
-}
-
-.skill-group {
-  /* background: aliceblue; */
-  margin: 20px;
-}
-
-.child-skill-group .skill-group {
-  margin: 20px 0px 20px 20px;
 }
 

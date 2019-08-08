@@ -1,0 +1,45 @@
+.skill-group {
+  margin: 20px;
+}
+
+.child-skill-group .skill-group {
+  margin: 20px 0px 20px 20px;
+}
+
+.roadmap__parent-skill-group {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-flow: column wrap;
+   align-content: center;
+}
+
+.roadmap__skill-group {
+  background-color: #1e1f20;
+  margin: 25px;
+  border: 1px solid #97f0e1;
+  width: 200px;
+}
+
+.roadmap__skill-group:nth-of-type(odd) {
+  align-items: flex-start;
+  margin-right: 35%;
+}
+
+.roadmap__skill-group:nth-of-type(even) {
+  align-items: flex-end;
+  margin-left: 35%;
+}
+
+.roadmap__concept {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.roadmap__child-skill {
+  border-top: 1px solid #97f0e1;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 100;
+}
