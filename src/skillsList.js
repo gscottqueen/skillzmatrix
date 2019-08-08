@@ -12,6 +12,7 @@ class SkillsList extends Component {
       searchValue: "",
       filteredSkills: [],
       isChecked: true,
+      isView: '',
     };
     this.filterByValue = this.filterByValue.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -59,6 +60,7 @@ class SkillsList extends Component {
   handleToggle() {
     this.setState({
       isChecked: !this.state.isChecked,
+      // isView: this.state.isChecked === false ? ""
       skills: this.nestChildren(this.state.skills, 0),
     });
   }
@@ -70,6 +72,7 @@ class SkillsList extends Component {
         <header className="header">
         <Toggle
           isChecked={this.state.isChecked}
+          isView={this.state.isChecked === true ? "Progress" : "Roadmap"}
           handleToggle={this.handleToggle}/>
         {/* {this.state.isChecked === false && */}
           <input
@@ -85,6 +88,7 @@ class SkillsList extends Component {
             {this.state.filteredSkills.map(function (skill, index) {
               return <div className="roadmap__skill-group" key={index}>
                 <div htmlFor="file" className="roadmap__concept">{skill.gsx$concept.$t}</div>
+
                   {skill.children &&
                     <div className="roadmap__child-skill-group">{skill.children.map(function (childSkill, childindex) {
                       return <div className="roadmap__child-skill" key={childindex}>

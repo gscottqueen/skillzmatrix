@@ -28,7 +28,7 @@ class ProgressIndicator extends Component {
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
           data-value={this.state.currentValue}></output>
-        <progress
+        {/* <progress
           className="goal-progress"
           min="0"
           max="5"
@@ -42,7 +42,7 @@ class ProgressIndicator extends Component {
           htmlFor={this.state.id}
           id="totalCurrentValue"
           data-goal={this.state.goalValue}
-          data-value={this.state.currentValue}></output>
+          data-value={this.state.currentValue}></output> */}
       </div>
     )
   }

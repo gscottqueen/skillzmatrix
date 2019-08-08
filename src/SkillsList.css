@@ -19,16 +19,23 @@
   margin: 25px;
   border: 1px solid #97f0e1;
   width: 200px;
+  border-radius: 10px;
 }
 
 .roadmap__skill-group:nth-of-type(odd) {
   align-items: flex-start;
   margin-right: 35%;
+  -webkit-box-shadow: 17px 15px 21px -9px rgba(0,0,0,0.6);
+  -moz-box-shadow: 17px 15px 21px -9px rgba(0,0,0,0.6);
+  box-shadow: 17px 15px 21px -9px rgba(0,0,0,0.6);
 }
 
 .roadmap__skill-group:nth-of-type(even) {
   align-items: flex-end;
   margin-left: 35%;
+  -webkit-box-shadow: -19px 15px 21px -9px rgba(0,0,0,0.6);
+  -moz-box-shadow: -19px 15px 21px -9px rgba(0,0,0,0.6);
+  box-shadow: -19px 15px 21px -9px rgba(0,0,0,0.6);
 }
 
 .roadmap__concept {

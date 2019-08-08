@@ -1,7 +1,7 @@
 .toggle-group {
   position: absolute;
   right: 0;
-  margin: 35px 25px 0px 0px;
+  margin: 35px 35px 0px 0px;
 }
 
 /* The switch - the box around the slider */
@@ -46,11 +46,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #91aeff;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #91aeff;
 }
 
 input:checked + .slider:before {
@@ -69,8 +69,9 @@ input:checked + .slider:before {
 }
 
 .toggle-label {
-  font-size: 8px;
+  font-size: 10px;
+  font-weight: bold;
   position: relative;
-  left: 55px;
+  left: 65px;
   top: 22px;
 }
