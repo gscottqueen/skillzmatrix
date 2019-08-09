@@ -3,6 +3,7 @@ import ProgressIndicator from './progressIndicator'
 import './SearchFilter.css'
 import './SkillsList.css'
 import Toggle from './Toggle'
+import { SteppedLineTo } from 'react-lineto'
 
 class SkillsList extends Component {
   constructor(props) {
@@ -74,21 +75,19 @@ class SkillsList extends Component {
           isChecked={this.state.isChecked}
           isView={this.state.isChecked === true ? "Progress" : "Roadmap"}
           handleToggle={this.handleToggle}/>
-        {/* {this.state.isChecked === false && */}
           <input
             type="text"
             className="search-filter"
             placeholder="Search for a skill to filter..."
             value={this.state.searchValue}
             onChange={this.filterByValue} />
-          {/* } */}
         </header>
         { this.state.isChecked ? (
           <div className="roadmap__parent-skill-group">
             {this.state.filteredSkills.map(function (skill, index) {
               return <div className="roadmap__skill-group" key={index}>
-                <div htmlFor="file" className="roadmap__concept">{skill.gsx$concept.$t}</div>
-
+                <div htmlFor="file" className="roadmap__concept">
+                  {skill.gsx$concept.$t}</div>
                   {skill.children &&
                     <div className="roadmap__child-skill-group">{skill.children.map(function (childSkill, childindex) {
                       return <div className="roadmap__child-skill" key={childindex}>
@@ -135,39 +134,6 @@ class SkillsList extends Component {
               })}
             </ul>
         )}
-        {/* <ul className="parent-skill-group">
-          {this.state.filteredSkills.map(function(skill, index) {
-            return <li className="skill-group" key={index}>
-              <ul>
-                <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
-                <li>
-                  <ProgressIndicator
-                    id={skill.gsx$concept.$t}
-                    value={skill.gsx$measure.$t}
-                    goal={skill.gsx$goal.$t}>
-                  </ProgressIndicator>
-                </li>
-                {skill.children &&
-                  <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
-                    return <li className="skill-group" key={childindex}>
-                      <ul>
-                        <label htmlFor="file" className="concept">{childSkill.gsx$concept.$t}</label>
-                        <li>
-                          <ProgressIndicator
-                            id={childSkill.gsx$concept.$t}
-                            value={childSkill.gsx$measure.$t}
-                            goal={childSkill.gsx$goal.$t}>
-                          </ProgressIndicator>
-                        </li>
-                      </ul>
-                  </li>
-                })}
-                </ul>
-                }
-              </ul>
-            </li>
-          })}
-        </ul> */}
       </div>
     );
   }
