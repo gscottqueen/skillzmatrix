@@ -3,7 +3,6 @@ import ProgressIndicator from './progressIndicator'
 import './SearchFilter.css'
 import './SkillsList.css'
 import Toggle from './Toggle'
-// import { SteppedLineTo } from 'react-lineto'
 
 class SkillsList extends Component {
   constructor(props) {
@@ -20,6 +19,7 @@ class SkillsList extends Component {
     // load our data and nest the skills
     this.props.data.then(data => {
       const skills = data.feed.entry
+      console.log(skills)
       this.setState({
         skills: skills,
         filteredSkills: this.nestChildren(skills, 0),
@@ -42,7 +42,7 @@ class SkillsList extends Component {
         // console.log('looking for', arr[item])
       }
     }
-    console.log(nestedSkills)
+    // console.log(nestedSkills)
     return nestedSkills
   }
 
@@ -87,7 +87,7 @@ class SkillsList extends Component {
         { this.state.isChecked ? (
           <div className="roadmap__parent-skill-group">
             {this.state.filteredSkills.map(function (skill, index) {
-              console.log(skill.children)
+              // console.log(skill.children)
               return <div className="roadmap__skill-group" key={index}>
                 <div htmlFor="file" className="roadmap__concept">
                   {skill.gsx$concept.$t}</div>
@@ -115,7 +115,24 @@ class SkillsList extends Component {
               {this.state.filteredSkills.map(function (skill, index) {
                 return <li className="skill-group" key={index}>
                   <ul>
-                    <label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
+                    <li className="label-group"><label htmlFor="file" className="concept">{skill.gsx$concept.$t}</label>
+                      <li className="badges">
+                        <ul className="achivement-group">
+                          {skill.gsx$usedinlearning.$t === "1" && <li className="achivement usedinlearning"></li>}
+                          {skill.gsx$pairprogramed.$t === "1" && <li className="achivement pairprogramed"></li>}
+                          {skill.gsx$usedinproduction.$t === "1" && <li className="achivement usedinproduction"></li>}
+                          {skill.gsx$debugged.$t === "1" && <li className="achivement debugged"></li>}
+                          {skill.gsx$presentedonit.$t === "1" && <li className="achivement presentedonit"></li>}
+                          {skill.gsx$taughtanother.$t === "1" && <li className="achivement taughtanother"></li>}
+                          {skill.gsx$writtenblogarticle.$t === "1" && <li className="achivement writtenblogarticle"></li>}
+                          {skill.gsx$yearsexp.$t === "1" && <li className="achivement yearsexp"></li>}
+                          {skill.gsx$yearsexp_2.$t === "1" && <li className="achivement yearsexp_2"></li>}
+                          {skill.gsx$yearsexp_3.$t === "1" && <li className="achivement yearsexp_3"></li>}
+                          {skill.gsx$yearsexp_4.$t === "1" && <li className="achivement yearsexp_4"></li>}
+                          {skill.gsx$yearsexp_2.$t === "1" && <li className="achivement yearsexp_2"></li>}
+                        </ul>
+                      </li>
+                    </li>
                     <li>
                       <ProgressIndicator
                         id={skill.gsx$concept.$t}
@@ -123,7 +140,6 @@ class SkillsList extends Component {
                         goal={skill.gsx$goal.$t}>
                       </ProgressIndicator>
                     </li>
-
                     {skill.children &&
                       <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
                         return <li className="skill-group" key={childindex}>

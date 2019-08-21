@@ -94,3 +94,47 @@
   padding: 0px 10px 5px 10px;
   margin: 0px;
 }
+.label-group {
+  display: flex;
+}
+/* badges */
+.badges {
+  margin: 0;
+  padding: 0;
+}
+
+.achivement-group {
+  display: flex;
+}
+
+.achivement {
+  margin-left: 5px;
+}
+
+.usedinlearning::after {
+  content: url(./images/iconfinder_Streamline-53_185073_usedinlearning.svg);
+  /* background-size: 20px;
+  background-color: rgb(255, 73, 53);
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  border: 2px solid rgb(247, 160, 150);
+  border-radius: 50px; */
+}
+
+/*
+familar
+usedinlearning iconfinder_Streamline-53_185073_usedinlearning.svg
+pairprogramed iconfinder_Streamline-08_185027_pairprogramed.svg
+usedinproduction iconfinder_Streamline-75_185095_usedinprod.svg
+debugged iconfinder_Streamline-76_185096_debugged.svg
+presentedonit iconfinder_Streamline-59_185079_presentedonit.svg
+taughtanother iconfinder_Streamline-78_185098_taughtanother.svg
+writtenblogarticle
+yearsexp
+yearsexp_2 iconfinder_Streamline-96_185116_yearsexp_2.svg
+yearsexp_3 iconfinder_Streamline-02_185021_yearsexp_3.svg
+yearsexp_4 iconfinder_Streamline-01_185020_yearsexp_4.svg
+*/
+
+/* https://www.iconfinder.com/iconsets/streamline-icon-set-free-pack */
