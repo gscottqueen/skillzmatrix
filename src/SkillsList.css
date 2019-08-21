@@ -68,12 +68,29 @@
 .roadmap__concept {
   padding: 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  background-color: #83ffea33;
+  border-radius: 8px 8px 0px 0px;
+
 }
 
 .roadmap__child-skill {
-  border-top: 1px solid #97f0e1;
-  padding: 10px;
+  border-top: 2px solid #97f0e1;
   font-size: 12px;
   font-weight: 100;
+}
+
+.roadmap__child-skill--concept {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.roadmap__grandchild-skill-group {
+  border-top: 1px dotted #d4d4d4;
+  padding: 10px;
+}
+
+.roadmap__grandchild-skill--concept {
+  padding: 0px 10px 5px 10px;
+  margin: 0px;
 }

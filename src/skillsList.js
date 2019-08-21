@@ -94,12 +94,12 @@ class SkillsList extends Component {
                   {skill.children &&
                     <div className="roadmap__child-skill-group">{skill.children.map(function (childSkill, childindex) {
                       return <div className="roadmap__child-skill" key={childindex}>
-                        <div>{childSkill.gsx$concept.$t}</div>
+                        <div className="roadmap__child-skill--concept">{childSkill.gsx$concept.$t}</div>
                         {childSkill.children &&
-                          <div className="roadmap__child-skill-group--child">
+                          <div className="roadmap__grandchild-skill-group">
                           {childSkill.children.map(function(childSkill, childindex){
-                              return <div className="roadmap__child-skill--child" key={childindex}><div>{childSkill.gsx$concept.$t}</div>
-                              </div>
+                            return <ul className="roadmap__grandchild-skill" key={childindex}><li className="roadmap__grandchild-skill--concept">{childSkill.gsx$concept.$t}</li>
+                              </ul>
                             })}
                           </div>
                         }
@@ -123,6 +123,7 @@ class SkillsList extends Component {
                         goal={skill.gsx$goal.$t}>
                       </ProgressIndicator>
                     </li>
+
                     {skill.children &&
                       <ul className="child-skill-group">{skill.children.map(function (childSkill, childindex) {
                         return <li className="skill-group" key={childindex}>
@@ -136,6 +137,23 @@ class SkillsList extends Component {
                               </ProgressIndicator>
                             </li>
                           </ul>
+                          {childSkill.children &&
+                            <ul className="child-skill-group">{childSkill.children.map(function (childSkill, childindex) {
+                              return <li className="skill-group" key={childindex}>
+                                <ul>
+                                  <label htmlFor="file" className="concept">{childSkill.gsx$concept.$t}</label>
+                                  <li>
+                                    <ProgressIndicator
+                                      id={childSkill.gsx$concept.$t}
+                                      value={childSkill.gsx$measure.$t}
+                                      goal={childSkill.gsx$goal.$t}>
+                                    </ProgressIndicator>
+                                  </li>
+                                </ul>
+                              </li>
+                            })}
+                            </ul>
+                          }
                         </li>
                       })}
                       </ul>
