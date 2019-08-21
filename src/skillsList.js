@@ -3,7 +3,7 @@ import ProgressIndicator from './progressIndicator'
 import './SearchFilter.css'
 import './SkillsList.css'
 import Toggle from './Toggle'
-import { SteppedLineTo } from 'react-lineto'
+// import { SteppedLineTo } from 'react-lineto'
 
 class SkillsList extends Component {
   constructor(props) {
@@ -30,16 +30,19 @@ class SkillsList extends Component {
   nestChildren(arr, parentID) {
     const nestedSkills = []
     for (const item in arr) {
+      // console.log('looking for', arr[item])
       // if there is no parent the child dissapears!! Todo: fixit
       if (parseInt(arr[item].gsx$parent.$t) === parentID) {
-        const children = this.nestChildren(arr, parseInt(arr[item].gsx$id.$t))
-        if (children.length) {
+        let children = this.nestChildren(arr, parseInt(arr[item].gsx$id.$t))
+        if (children.length && arr[item]) {
           arr[item].children = children
         }
         nestedSkills.push(arr[item])
+      } else if (parseInt(arr[item].gsx$parent.$t) !== parentID){
+        // console.log('looking for', arr[item])
       }
     }
-    // console.log(nestedSkills)
+    console.log(nestedSkills)
     return nestedSkills
   }
 
@@ -61,7 +64,6 @@ class SkillsList extends Component {
   handleToggle() {
     this.setState({
       isChecked: !this.state.isChecked,
-      // isView: this.state.isChecked === false ? ""
       skills: this.nestChildren(this.state.skills, 0),
     });
   }
@@ -85,6 +87,7 @@ class SkillsList extends Component {
         { this.state.isChecked ? (
           <div className="roadmap__parent-skill-group">
             {this.state.filteredSkills.map(function (skill, index) {
+              console.log(skill.children)
               return <div className="roadmap__skill-group" key={index}>
                 <div htmlFor="file" className="roadmap__concept">
                   {skill.gsx$concept.$t}</div>
@@ -92,6 +95,14 @@ class SkillsList extends Component {
                     <div className="roadmap__child-skill-group">{skill.children.map(function (childSkill, childindex) {
                       return <div className="roadmap__child-skill" key={childindex}>
                         <div>{childSkill.gsx$concept.$t}</div>
+                        {childSkill.children &&
+                          <div className="roadmap__child-skill-group--child">
+                          {childSkill.children.map(function(childSkill, childindex){
+                              return <div className="roadmap__child-skill--child" key={childindex}><div>{childSkill.gsx$concept.$t}</div>
+                              </div>
+                            })}
+                          </div>
+                        }
                       </div>
                     })}
                     </div>
